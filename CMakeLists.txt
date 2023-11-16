@@ -27,10 +27,6 @@ set(sources
   domain/state.cpp
   menus/menu_inicial.h
   menus/menu_inicial.cpp
-  # menus/menu_resultados.h
-  # menus/menu_resultados.cpp
-  # controllers/controller_votacao.h
-  # controllers/controller_votacao.cpp
   features/cadastro/menus/menu_cadastro.h
   features/cadastro/menus/menu_cadastro.cpp
   features/cadastro/controllers/controller_dados_eleitor.h
@@ -41,12 +37,10 @@ set(sources
   features/cadastro/eleitores/menus/menu_editar_eleitor.cpp
   features/cadastro/eleitores/controllers/controller_eleitor.h
   features/cadastro/eleitores/controllers/controller_eleitor.cpp
-  # features/cadastro/eleitores/controllers/controller_eleitor_edit.h
-  # features/cadastro/eleitores/controllers/controller_eleitor_edit.cpp
-  # features/cadastro/prefeitos/menus/menu_prefeito.h
-  # features/cadastro/prefeitos/menus/menu_prefeito.cpp
-  # features/cadastro/vereadores/menus/menu_vereador.h
-  # features/cadastro/vereadores/menus/menu_vereador.cpp
+  features/cadastro/candidatos/menus/menu_candidato.h
+  features/cadastro/candidatos/menus/menu_candidato.cpp
+  features/cadastro/candidatos/controllers/controller_candidato.h
+  features/cadastro/candidatos/controllers/controller_candidato.cpp
 )
 
 set (dirs
@@ -59,10 +53,8 @@ set (dirs
   features/cadastro/controllers
   features/cadastro/eleitores/menus
   features/cadastro/eleitores/controllers
-  # features/cadastro/prefeitos/menus
-  features/cadastro/prefeitos/controllers
-  # features/cadastro/vereadores/menus
-  features/cadastro/vereadores/controllers
+  features/cadastro/candidatos/menus
+  features/cadastro/candidatos/controllers
 )
 
 add_executable(tp2 ${sources})

@@ -1,6 +1,9 @@
 #include "candidato.h"
 
-Candidato::Candidato(int numTitulo, std::string nome, std::string zona, std::string secao, int numero, std::string nomePartido, std::string cidade, int totalVotos) : Eleitor(numTitulo, nome, zona, secao), _numero(numero), _nomePartido(nomePartido), _cidade(cidade), _totalVotos(totalVotos) {}
+Candidato::Candidato(int numTitulo, std::string nome, std::string zona, std::string secao, int numero, std::string nomePartido, std::string cidade) : Eleitor(numTitulo, nome, zona, secao), _numero(numero), _nomePartido(nomePartido), _cidade(cidade)
+{
+  _totalVotos = 0;
+}
 
 int Candidato::getNumero()
 {

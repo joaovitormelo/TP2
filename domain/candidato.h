@@ -12,7 +12,7 @@ private:
   int _totalVotos;
 
 public:
-  Candidato(int numTitulo, std::string nome, std::string zona, std::string secao, int numero, std::string nomePartido, std::string cidade, int totalVotos);
+  Candidato(int numTitulo, std::string nome, std::string zona, std::string secao, int numero, std::string nomePartido, std::string cidade);
   int getNumero();
   void setNumero(int numero);
   std::string getNomePartido();

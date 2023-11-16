@@ -9,7 +9,7 @@ bool ControllerDadosEleitor::validaNumTitulo(int numTitulo, bool isEdit)
       return true;
   if (_state->checaExisteNumTitulo(numTitulo))
   {
-    std::cout << "Nº já cadastrado!" << std::endl;
+    std::cout << "Nº Título já cadastrado!" << std::endl;
     return false;
   }
   return true;

@@ -13,6 +13,7 @@ private:
   std::vector<Candidato *> _listaVereador;
   std::vector<Candidato *> _listaPrefeito;
   Eleitor *_eleitorEdit;
+  Candidato *_candidatoEdit;
 
 public:
   State();
@@ -35,6 +36,9 @@ public:
   Eleitor *getEleitorEdit();
   void setEleitorEdit(Eleitor *eleitorEdit);
   bool checaExisteNumTitulo(int numTitulo);
+  Candidato *getCandidatoEdit();
+  void setCandidatoEdit(Candidato *candidatoEdit);
+  bool checaExisteNumero(int numero);
 };
 
 #endif

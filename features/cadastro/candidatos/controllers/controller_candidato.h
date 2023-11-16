@@ -4,6 +4,7 @@
 #include "global.h"
 #include "menu_editar_eleitor.h"
 #include "controller_dados_eleitor.h"
+#include "controller_dados_candidato.h"
 
 // Classe para controlar todas as operações com os candidatos (vereador ou prefeito)
 
@@ -14,9 +15,10 @@ private:
   State *_state;
   MenuEditarEleitor *_menuEditarEleitor;
   ControllerDadosEleitor *_controllerDadosEleitor;
+  ControllerDadosCandidato *_controllerDadosCandidato;
 
 public:
-  ControllerCandidato(State *state, MenuEditarEleitor *menuEditarEleitor, ControllerDadosEleitor *controllerDadosEleitor);
+  ControllerCandidato(State *state, MenuEditarEleitor *menuEditarEleitor, ControllerDadosEleitor *controllerDadosEleitor, ControllerDadosCandidato *controllerDadosCandidato);
   RetornoController listCandidato();
   RetornoController addCandidato();
   RetornoController viewCandidato();

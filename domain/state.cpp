@@ -134,3 +134,24 @@ bool State::checaExisteNumTitulo(int numTitulo)
       return true;
   return false;
 }
+
+Candidato *State::getCandidatoEdit()
+{
+  return _candidatoEdit;
+}
+
+void State::setCandidatoEdit(Candidato *candidatoEdit)
+{
+  _candidatoEdit = candidatoEdit;
+}
+
+bool State::checaExisteNumero(int numero)
+{
+  for (auto vereador : _listaVereador)
+    if (vereador->getNumero() == numero)
+      return true;
+  for (auto prefeito : _listaPrefeito)
+    if (prefeito->getNumero() == numero)
+      return true;
+  return false;
+}

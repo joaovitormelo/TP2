@@ -41,6 +41,8 @@ set(sources
   features/cadastro/candidatos/menus/menu_candidato.cpp
   features/cadastro/candidatos/controllers/controller_candidato.h
   features/cadastro/candidatos/controllers/controller_candidato.cpp
+  features/cadastro/candidatos/controllers/controller_dados_candidato.h
+  features/cadastro/candidatos/controllers/controller_dados_candidato.cpp
 )
 
 set (dirs

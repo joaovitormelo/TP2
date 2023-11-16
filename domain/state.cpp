@@ -45,24 +45,70 @@ void State::deletaEleitor(int numTitulo)
     }
 }
 
-std::vector<Vereador *> State::getListaVereador()
+std::vector<Candidato *> State::getListaVereador()
 {
   return _listaVereador;
 }
 
-void State::setListaVereador(std::vector<Vereador *> listaVereador)
+void State::setListaVereador(std::vector<Candidato *> listaVereador)
 {
   _listaVereador = listaVereador;
 }
 
-std::vector<Prefeito *> State::getListaPrefeito()
+void State::addVereador(Vereador *vereador)
+{
+  _listaVereador.push_back(vereador);
+}
+
+Candidato *State::buscaVereador(int numero)
+{
+  for (auto vereador : _listaVereador)
+    if (vereador->getNumero() == numero)
+      return vereador;
+  return nullptr;
+}
+
+void State::deletaVereador(int numero)
+{
+  for (int i = 0; i < _listaVereador.size(); i++)
+    if (_listaVereador[i]->getNumTitulo() == numero)
+    {
+      _listaVereador.erase(_listaVereador.begin() + i);
+      return;
+    }
+}
+
+std::vector<Candidato *> State::getListaPrefeito()
 {
   return _listaPrefeito;
 }
 
-void State::setListaPrefeito(std::vector<Prefeito *> listaPrefeito)
+void State::setListaPrefeito(std::vector<Candidato *> listaPrefeito)
 {
   _listaPrefeito = listaPrefeito;
+}
+
+void State::addPrefeito(Prefeito *prefeito)
+{
+  _listaPrefeito.push_back(prefeito);
+}
+
+Candidato *State::buscaPrefeito(int numero)
+{
+  for (auto prefeito : _listaPrefeito)
+    if (prefeito->getNumero() == numero)
+      return prefeito;
+  return nullptr;
+}
+
+void State::deletaPrefeito(int numero)
+{
+  for (int i = 0; i < _listaPrefeito.size(); i++)
+    if (_listaPrefeito[i]->getNumTitulo() == numero)
+    {
+      _listaPrefeito.erase(_listaPrefeito.begin() + i);
+      return;
+    }
 }
 
 Eleitor *State::getEleitorEdit()

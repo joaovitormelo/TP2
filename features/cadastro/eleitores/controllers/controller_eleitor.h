@@ -3,16 +3,19 @@
 #include "state.h"
 #include "global.h"
 #include "menu_editar_eleitor.h"
+#include "controller_dados_eleitor.h"
+
+// Classe para controlar todas as operações com os eleitores
 
 class ControllerEleitor
 {
 private:
   State *_state;
   MenuEditarEleitor *_menuEditarEleitor;
-  bool validaNumTitulo(int numTitulo);
+  ControllerDadosEleitor *_controllerDadosEleitor;
 
 public:
-  ControllerEleitor(State *state, MenuEditarEleitor *menuEditarEleitor);
+  ControllerEleitor(State *state, MenuEditarEleitor *menuEditarEleitor, ControllerDadosEleitor *controllerDadosEleitor);
   RetornoController listEleitor();
   RetornoController addEleitor();
   RetornoController viewEleitor();

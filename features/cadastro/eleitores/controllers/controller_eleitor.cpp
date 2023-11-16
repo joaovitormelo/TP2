@@ -3,23 +3,20 @@
 #include "string"
 #include "eleitor.h"
 
-ControllerEleitor::ControllerEleitor(State *state, MenuEditarEleitor *menuEditarEleitor) : _state(state), _menuEditarEleitor(menuEditarEleitor) {}
+// Classe para controlar todas as operações com os eleitores
 
-bool ControllerEleitor::validaNumTitulo(int numTitulo)
-{
-  if (_state->checaExisteNumTitulo(numTitulo))
-  {
-    std::cout << "Nº já cadastrado!" << std::endl;
-    return false;
-  }
-  return true;
-}
+ControllerEleitor::ControllerEleitor(State *state, MenuEditarEleitor *menuEditarEleitor, ControllerDadosEleitor *controllerDadosEleitor) : _state(state), _menuEditarEleitor(menuEditarEleitor), _controllerDadosEleitor(controllerDadosEleitor) {}
 
 RetornoController ControllerEleitor::listEleitor()
 {
-  std::cout << "Lista de Eleitores:" << std::endl;
-  for (auto eleitor : _state->getListaEleitor())
-    std::cout << "Nº TÍTULO: " << eleitor->getNumTitulo() << " NOME: " << eleitor->getNome() << std::endl;
+  std::cout << "Lista de Eleitores: " << std::endl;
+  if (_state->getListaEleitor().size())
+  {
+    for (auto eleitor : _state->getListaEleitor())
+      std::cout << "Nº TÍTULO: " << eleitor->getNumTitulo() << " NOME: " << eleitor->getNome() << std::endl;
+  }
+  else
+    std::cout << "(Lista vazia)" << std::endl;
   return RetornoController::Completo;
 }
 
@@ -31,7 +28,7 @@ RetornoController ControllerEleitor::addEleitor()
   std::cout << "Nº Título: ";
   numTitulo = readNumber<int>(
       [&](int numTitulo)
-      { return validaNumTitulo(numTitulo); });
+      { return _controllerDadosEleitor->validaNumTitulo(numTitulo, false); });
   std::cout << "Nome: ";
   nome = readLine();
   std::cout << "Zona: ";

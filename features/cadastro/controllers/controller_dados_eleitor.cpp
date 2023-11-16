@@ -2,10 +2,11 @@
 
 ControllerDadosEleitor::ControllerDadosEleitor(State *state) : _state(state) {}
 
-bool ControllerDadosEleitor::validaNumTitulo(int numTitulo)
+bool ControllerDadosEleitor::validaNumTitulo(int numTitulo, bool isEdit)
 {
-  if (_state->getEleitorEdit()->getNumTitulo() == numTitulo)
-    return true;
+  if (isEdit)
+    if (_state->getEleitorEdit()->getNumTitulo() == numTitulo)
+      return true;
   if (_state->checaExisteNumTitulo(numTitulo))
   {
     std::cout << "Nº já cadastrado!" << std::endl;
@@ -22,7 +23,7 @@ RetornoController ControllerDadosEleitor::editarNumTitulo()
   numTitulo = readNumber<int>(
       [&](int numTitulo)
       {
-        return validaNumTitulo(numTitulo);
+        return validaNumTitulo(numTitulo, true);
       });
   _state->getEleitorEdit()->setNumTitulo(numTitulo);
   finalizarTela();

@@ -23,9 +23,9 @@ void MainInitializer::initializeCadastro()
 {
   _controllerDadosEleitor = new ControllerDadosEleitor(_state);
   _menuEditarEleitor = new MenuEditarEleitor("Editar Eleitor", _state);
-  _controllerEleitor = new ControllerEleitor(_state, _menuEditarEleitor);
-  _controllerPrefeito = new ControllerCandidato<Prefeito>(_state, _menuEditarEleitor);
-  _controllerVereador = new ControllerCandidato<Vereador>(_state, _menuEditarEleitor);
+  _controllerEleitor = new ControllerEleitor(_state, _menuEditarEleitor, _controllerDadosEleitor);
+  _controllerPrefeito = new ControllerCandidato<Prefeito>(_state, _menuEditarEleitor, _controllerDadosEleitor);
+  _controllerVereador = new ControllerCandidato<Vereador>(_state, _menuEditarEleitor, _controllerDadosEleitor);
   _menuEleitor = new MenuEleitor("Menu do Eleitor", _state, _controllerEleitor);
   _menuVereador = new MenuCandidato<Vereador>("Menu do Vereador", _state, _controllerVereador);
   _menuPrefeito = new MenuCandidato<Prefeito>("Menu do Prefeito", _state, _controllerPrefeito);

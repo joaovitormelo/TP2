@@ -7,7 +7,6 @@ class ControllerDadosEleitor
 {
 private:
   State *_state;
-  bool validaNumTitulo(int numTitulo);
 
 public:
   ControllerDadosEleitor(State *state);
@@ -15,6 +14,7 @@ public:
   RetornoController editarNumTitulo();
   RetornoController editarZona();
   RetornoController editarSecao();
+  bool validaNumTitulo(int numTitulo, bool isEdit);
 };
 
 #endif

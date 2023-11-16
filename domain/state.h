@@ -20,6 +20,7 @@ public:
   void setListaEleitor(std::vector<Eleitor *> listaEleitor);
   void addEleitor(Eleitor *eleitor);
   Eleitor *buscaEleitor(int numTitulo);
+  void deletaEleitor(int numTitulo);
   std::vector<Vereador *> getListaVereador();
   void setListaVereador(std::vector<Vereador *> listaVereador);
   std::vector<Prefeito *> getListaPrefeito();

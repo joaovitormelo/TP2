@@ -35,6 +35,16 @@ Eleitor *State::buscaEleitor(int numTitulo)
   return nullptr;
 }
 
+void State::deletaEleitor(int numTitulo)
+{
+  for (int i = 0; i < _listaEleitor.size(); i++)
+    if (_listaEleitor[i]->getNumTitulo() == numTitulo)
+    {
+      _listaEleitor.erase(_listaEleitor.begin() + i);
+      return;
+    }
+}
+
 std::vector<Vereador *> State::getListaVereador()
 {
   return _listaVereador;

@@ -39,12 +39,29 @@ RetornoController ControllerEleitor::addEleitor()
   std::cout << "Seção: ";
   secao = readLine();
   _state->addEleitor(new Eleitor(numTitulo, nome, zona, secao));
-  std::cout << "Eleitor adicionado!";
+  std::cout << "Eleitor adicionado!" << std::endl;
   return RetornoController::Completo;
 }
 
 RetornoController ControllerEleitor::viewEleitor()
 {
+  int numTitulo;
+  std::cout << "Informe o Nº Título: ";
+  numTitulo = readNumber<int>();
+  Eleitor *eleitor = _state->buscaEleitor(numTitulo);
+  if (eleitor)
+  {
+    std::cout << "Dados do Eleitor:" << std::endl;
+    std::cout << "Nº Titulo: " << eleitor->getNumTitulo() << std::endl;
+    std::cout << "Nome: " << eleitor->getNome() << std::endl;
+    std::cout << "Zona: " << eleitor->getZona() << std::endl;
+    std::cout << "Seção: " << eleitor->getSecao() << std::endl;
+  }
+  else
+  {
+    std::cout << "Eleitor não encontrado!" << std::endl;
+  }
+  return RetornoController::Completo;
 }
 
 RetornoController ControllerEleitor::editEleitor()
@@ -60,12 +77,25 @@ RetornoController ControllerEleitor::editEleitor()
   }
   else
   {
-    std::cout << "Eleitor não encontrado!";
+    std::cout << "Eleitor não encontrado!" << std::endl;
   }
   return RetornoController::Completo;
 }
 
 RetornoController ControllerEleitor::deleteEleitor()
 {
+  int numTitulo;
+  std::cout << "Informe o Nº Título: ";
+  numTitulo = readNumber<int>();
+  Eleitor *eleitor = _state->buscaEleitor(numTitulo);
+  if (eleitor)
+  {
+    _state->deletaEleitor(numTitulo);
+    std::cout << "Eleitor deletado!" << std::endl;
+  }
+  else
+  {
+    std::cout << "Eleitor não encontrado!" << std::endl;
+  }
   return RetornoController::Completo;
 }

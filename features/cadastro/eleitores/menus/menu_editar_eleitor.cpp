@@ -1,6 +1,9 @@
 #include "menu_editar_eleitor.h"
 
-MenuEditarEleitor::MenuEditarEleitor(std::string label, State *state) : Menu(label), _state(state) {}
+MenuEditarEleitor::MenuEditarEleitor(std::string label, State *state) : Menu(label), _state(state)
+{
+  inicializarOpcoes();
+}
 
 void MenuEditarEleitor::inicializarOpcoes()
 {

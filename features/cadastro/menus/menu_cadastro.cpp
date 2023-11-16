@@ -1,8 +1,6 @@
 #include "menu_cadastro.h"
 #include "opcao_menu.h"
 #include "menu_eleitor.h"
-// #include "menu_prefeito.h"
-// #include "menu_vereador.h"
 
 MenuCadastro::MenuCadastro(std::string label, State *state, MenuEleitor *menuEleitor) : Menu(label), _state(state), _menuEleitor(menuEleitor)
 {

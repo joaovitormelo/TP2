@@ -22,6 +22,19 @@ void State::setListaEleitor(std::vector<Eleitor *> listaEleitor)
   _listaEleitor = listaEleitor;
 }
 
+void State::addEleitor(Eleitor *eleitor)
+{
+  _listaEleitor.push_back(eleitor);
+}
+
+Eleitor *State::buscaEleitor(int numTitulo)
+{
+  for (auto eleitor : _listaEleitor)
+    if (eleitor->getNumTitulo() == numTitulo)
+      return eleitor;
+  return nullptr;
+}
+
 std::vector<Vereador *> State::getListaVereador()
 {
   return _listaVereador;

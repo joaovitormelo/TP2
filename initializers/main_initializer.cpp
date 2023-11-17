@@ -14,18 +14,28 @@ MainInitializer::~MainInitializer()
   delete _menuInicial;
   delete _menuCadastro;
   delete _menuEleitor;
+  delete _menuVereador;
+  delete _menuPrefeito;
   delete _controllerEleitor;
+  delete _controllerVereador;
+  delete _controllerPrefeito;
+  delete _menuEditarVereador;
+  delete _menuEditarPrefeito;
   delete _menuEditarEleitor;
   delete _controllerDadosEleitor;
+  delete _controllerDadosCandidato;
 }
 
 void MainInitializer::initializeCadastro()
 {
   _controllerDadosEleitor = new ControllerDadosEleitor(_state);
-  _menuEditarEleitor = new MenuEditarEleitor("Editar Eleitor", _state);
+  _controllerDadosCandidato = new ControllerDadosCandidato(_state);
+  _menuEditarVereador = new MenuEditarCandidato<Vereador>("Editar Vereador", _state, _controllerDadosEleitor, _controllerDadosCandidato);
+  _menuEditarPrefeito = new MenuEditarCandidato<Prefeito>("Editar Prefeito", _state, _controllerDadosEleitor, _controllerDadosCandidato);
+  _menuEditarEleitor = new MenuEditarEleitor("Editar Eleitor", _state, _controllerDadosEleitor);
   _controllerEleitor = new ControllerEleitor(_state, _menuEditarEleitor, _controllerDadosEleitor);
-  _controllerPrefeito = new ControllerCandidato<Prefeito>(_state, _menuEditarEleitor, _controllerDadosEleitor);
-  _controllerVereador = new ControllerCandidato<Vereador>(_state, _menuEditarEleitor, _controllerDadosEleitor);
+  _controllerPrefeito = new ControllerCandidato<Prefeito>(_state, _menuEditarPrefeito, _controllerDadosEleitor, _controllerDadosCandidato);
+  _controllerVereador = new ControllerCandidato<Vereador>(_state, _menuEditarVereador, _controllerDadosEleitor, _controllerDadosCandidato);
   _menuEleitor = new MenuEleitor("Menu do Eleitor", _state, _controllerEleitor);
   _menuVereador = new MenuCandidato<Vereador>("Menu do Vereador", _state, _controllerVereador);
   _menuPrefeito = new MenuCandidato<Prefeito>("Menu do Prefeito", _state, _controllerPrefeito);

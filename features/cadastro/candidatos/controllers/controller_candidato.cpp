@@ -9,7 +9,7 @@
 // Classe para controlar todas as operações com os candidatos (vereador ou prefeito)
 
 template <typename T>
-ControllerCandidato<T>::ControllerCandidato(State *state, MenuEditarEleitor *menuEditarEleitor, ControllerDadosEleitor *controllerDadosEleitor, ControllerDadosCandidato *controllerDadosCandidato) : _state(state), _menuEditarEleitor(menuEditarEleitor), _controllerDadosEleitor(controllerDadosEleitor), _controllerDadosCandidato(controllerDadosCandidato) {}
+ControllerCandidato<T>::ControllerCandidato(State *state, MenuEditarCandidato<T> *menuEditarCandidato, ControllerDadosEleitor *controllerDadosEleitor, ControllerDadosCandidato *controllerDadosCandidato) : _state(state), _menuEditarCandidato(menuEditarCandidato), _controllerDadosEleitor(controllerDadosEleitor), _controllerDadosCandidato(controllerDadosCandidato) {}
 
 template <typename T>
 RetornoController ControllerCandidato<T>::listCandidato()
@@ -33,6 +33,7 @@ RetornoController ControllerCandidato<T>::listCandidato()
   }
   else
     std::cout << "(Lista vazia)" << std::endl;
+  hold();
   return RetornoController::Completo;
 }
 
@@ -93,6 +94,7 @@ RetornoController ControllerCandidato<T>::viewCandidato()
     std::cout << "Número: " << candidato->getNumero() << std::endl;
     std::cout << "Nome do Partido: " << candidato->getNomePartido() << std::endl;
     std::cout << "Cidade: " << candidato->getCidade() << std::endl;
+    hold();
   }
   else
   {
@@ -104,6 +106,22 @@ RetornoController ControllerCandidato<T>::viewCandidato()
 template <typename T>
 RetornoController ControllerCandidato<T>::editCandidato()
 {
+  int numero;
+  std::cout << "Informe o Número: ";
+  numero = readNumber<int>();
+  Candidato *candidato;
+  if (typeid(T) == typeid(Vereador))
+    candidato = _state->buscaVereador(numero);
+  else
+    candidato = _state->buscaPrefeito(numero);
+  if (candidato)
+  {
+    _state->setCandidatoEdit(candidato);
+    _menuEditarCandidato->executar();
+    std::cout << "Edições finalizadas!" << std::endl;
+  }
+  else
+    std::cout << "Candidato não encontrado!" << std::endl;
   return RetornoController::Completo;
 }
 
@@ -113,7 +131,11 @@ RetornoController ControllerCandidato<T>::deleteCandidato()
   int numero;
   std::cout << "Informe o Número: ";
   numero = readNumber<int>();
-  Candidato *candidato = _state->buscaCandidato(numero);
+  Candidato *candidato;
+  if (typeid(T) == typeid(Vereador))
+    candidato = _state->buscaVereador(numero);
+  else
+    candidato = _state->buscaPrefeito(numero);
   if (candidato)
   {
     if (typeid(T) == typeid(Vereador))
@@ -123,9 +145,7 @@ RetornoController ControllerCandidato<T>::deleteCandidato()
     std::cout << "Candidato deletado!" << std::endl;
   }
   else
-  {
     std::cout << "Candidato não encontrado!" << std::endl;
-  }
   return RetornoController::Completo;
 }
 

@@ -11,6 +11,9 @@ private:
 public:
   ControllerDadosCandidato(State *state);
   bool validaNumero(int numero, bool isEdit);
+  RetornoController editarNumero();
+  RetornoController editarNomePartido();
+  RetornoController editarCidade();
 };
 
 #endif

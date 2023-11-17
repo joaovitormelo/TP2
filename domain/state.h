@@ -31,13 +31,13 @@ public:
   std::vector<Candidato *> getListaPrefeito();
   void setListaPrefeito(std::vector<Candidato *> listaPrefeito);
   void addPrefeito(Prefeito *prefeito);
-  Candidato *buscaPrefeito(int numTitulo);
   void deletaPrefeito(int numTitulo);
   Eleitor *getEleitorEdit();
   void setEleitorEdit(Eleitor *eleitorEdit);
   bool checaExisteNumTitulo(int numTitulo);
   Candidato *getCandidatoEdit();
   void setCandidatoEdit(Candidato *candidatoEdit);
+  Candidato *buscaPrefeito(int numTitulo);
   bool checaExisteNumero(int numero);
 };
 

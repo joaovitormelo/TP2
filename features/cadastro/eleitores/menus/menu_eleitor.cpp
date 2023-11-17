@@ -9,7 +9,7 @@ void MenuEleitor::inicializarOpcoes()
 {
   _opcaoList.push_back(OpcaoMenu("Listar", std::bind(&ControllerEleitor::listEleitor, _controllerEleitor)));
   _opcaoList.push_back(OpcaoMenu("Adicionar", std::bind(&ControllerEleitor::addEleitor, _controllerEleitor)));
-  _opcaoList.push_back(OpcaoMenu("Visualizar", std::bind(&ControllerEleitor::viewEleitor, _controllerEleitor)));
+  _opcaoList.push_back(OpcaoMenu("Visualizar Detalhes", std::bind(&ControllerEleitor::viewEleitor, _controllerEleitor)));
   _opcaoList.push_back(OpcaoMenu("Editar", std::bind(&ControllerEleitor::editEleitor, _controllerEleitor)));
   _opcaoList.push_back(OpcaoMenu("Excluir", std::bind(&ControllerEleitor::deleteEleitor, _controllerEleitor)));
   _opcaoList.push_back(OpcaoMenu("Voltar", std::bind(voltar)));

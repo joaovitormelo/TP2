@@ -17,6 +17,7 @@ RetornoController ControllerEleitor::listEleitor()
   }
   else
     std::cout << "(Lista vazia)" << std::endl;
+  hold();
   return RetornoController::Completo;
 }
 
@@ -53,6 +54,7 @@ RetornoController ControllerEleitor::viewEleitor()
     std::cout << "Nome: " << eleitor->getNome() << std::endl;
     std::cout << "Zona: " << eleitor->getZona() << std::endl;
     std::cout << "Seção: " << eleitor->getSecao() << std::endl;
+    hold();
   }
   else
   {
@@ -71,6 +73,7 @@ RetornoController ControllerEleitor::editEleitor()
   {
     _state->setEleitorEdit(eleitor);
     _menuEditarEleitor->executar();
+    std::cout << "Edições finalizadas!" << std::endl;
   }
   else
   {

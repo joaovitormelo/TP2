@@ -13,7 +13,7 @@ void MenuCandidato<T>::inicializarOpcoes()
 {
   _opcaoList.push_back(OpcaoMenu("Listar", std::bind(&ControllerCandidato<T>::listCandidato, _controllerCandidato)));
   _opcaoList.push_back(OpcaoMenu("Adicionar", std::bind(&ControllerCandidato<T>::addCandidato, _controllerCandidato)));
-  _opcaoList.push_back(OpcaoMenu("Visualizar", std::bind(&ControllerCandidato<T>::viewCandidato, _controllerCandidato)));
+  _opcaoList.push_back(OpcaoMenu("Visualizar Detalhes", std::bind(&ControllerCandidato<T>::viewCandidato, _controllerCandidato)));
   _opcaoList.push_back(OpcaoMenu("Editar", std::bind(&ControllerCandidato<T>::editCandidato, _controllerCandidato)));
   _opcaoList.push_back(OpcaoMenu("Excluir", std::bind(&ControllerCandidato<T>::deleteCandidato, _controllerCandidato)));
   _opcaoList.push_back(OpcaoMenu("Voltar", std::bind(voltar)));

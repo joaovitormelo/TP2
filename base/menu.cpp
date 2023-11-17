@@ -14,7 +14,7 @@ RetornoController Menu::executar()
     int escolha;
     while (true)
     {
-      std::cin >> escolha;
+      escolha = readNumber<int>();
       if (escolha > 0 && escolha <= _opcaoList.size())
         break;
       else

@@ -39,6 +39,8 @@ set(sources
   features/cadastro/eleitores/controllers/controller_eleitor.cpp
   features/cadastro/candidatos/menus/menu_candidato.h
   features/cadastro/candidatos/menus/menu_candidato.cpp
+  features/cadastro/candidatos/menus/menu_editar_candidato.h
+  features/cadastro/candidatos/menus/menu_editar_candidato.cpp
   features/cadastro/candidatos/controllers/controller_candidato.h
   features/cadastro/candidatos/controllers/controller_candidato.cpp
   features/cadastro/candidatos/controllers/controller_dados_candidato.h

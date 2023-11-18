@@ -4,6 +4,8 @@
 #include "menu.h"
 #include "controller_eleitor.h"
 
+// Menu com as ações possíveis para o cadastro dos eleitores
+
 class MenuEleitor : public Menu
 {
 private:

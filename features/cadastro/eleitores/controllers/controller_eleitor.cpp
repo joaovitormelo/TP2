@@ -2,6 +2,7 @@
 #include "iostream"
 #include "string"
 #include "eleitor.h"
+#include <fstream>
 
 // Classe para controlar todas as operações com os eleitores
 
@@ -97,5 +98,62 @@ RetornoController ControllerEleitor::deleteEleitor()
   {
     std::cout << "Eleitor não encontrado!" << std::endl;
   }
+  return RetornoController::Completo;
+}
+
+RetornoController ControllerEleitor::importEleitor()
+{
+  std::string path;
+  std::cout << "Importação de Eleitores:" << std::endl;
+  std::cout << "Bem-vindo à importação de eleitores!" << std::endl;
+  std::cout << "Forneça um arquivo com cada linha no seguinte padrão:" << std::endl;
+  std::cout << "'numTitulo;nome;zona;secao'." << std::endl;
+  std::cout
+      << ">>> Informe o caminho completo para o arquivo: ";
+  path = readLine();
+  std::ifstream arquivo(path, std::ios::in);
+  std::string line;
+  int i = 0;
+  Eleitor *eleitor;
+  while (std::getline(arquivo, line))
+  {
+    i++;
+    try
+    {
+      eleitor = Eleitor::fromString(line);
+    }
+    catch (std::invalid_argument e)
+    {
+      std::cout << "Linha " << i << " - Falha: Nº Título deve ser um número!" << std::endl;
+      continue;
+    }
+    catch (ExceptionInvalidFormat e)
+    {
+      std::cout << "Linha " << i << " - Falha: Formato errado!" << std::endl;
+      continue;
+    }
+    if (_state->checaExisteNumTitulo(eleitor->getNumTitulo()))
+    {
+      std::cout << "Linha " << i << " - Falha: Nº Título já cadastrado!" << std::endl;
+      continue;
+    }
+    _state->addEleitor(eleitor);
+  }
+  std::cout << "Importação finalizada!" << std::endl;
+  arquivo.close();
+  return RetornoController::Completo;
+}
+
+RetornoController ControllerEleitor::exportEleitor()
+{
+  std::string path;
+  std::cout << "Exportação de Eleitores:" << std::endl;
+  std::cout << ">>> Informe o caminho completo para o arquivo de saída: ";
+  path = readLine();
+  std::ofstream arquivo(path, std::ios::out);
+  for (auto eleitor : _state->getListaEleitor())
+    arquivo << eleitor->getNumTitulo() << ";" << eleitor->getNome() << ";" << eleitor->getZona() << ";" << eleitor->getSecao() << std::endl;
+  std::cout << "Exportação finalizada!" << std::endl;
+  arquivo.close();
   return RetornoController::Completo;
 }

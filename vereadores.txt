@@ -1,0 +1,2 @@
+119;Reginaldo;Zona A;Seção B;13;PT;Viçosa
+120;José;A;B;14;PT;Divi

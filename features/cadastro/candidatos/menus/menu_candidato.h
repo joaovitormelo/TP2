@@ -4,6 +4,8 @@
 #include "menu.h"
 #include "controller_candidato.h"
 
+// Menu com as ações possíveis para o cadastro dos candidatos (vereadores ou prefeitos)
+
 template <typename T>
 class MenuCandidato : public Menu
 {

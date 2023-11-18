@@ -1,16 +1,20 @@
 #ifndef INF112_MENU_RESULTADOS_H
 #define INF112_MENU_RESULTADOS_H
-#include <string>
+#include "state.h"
 #include "menu.h"
-#include "global.h"
+
+// Menu com ações para visualização dos resultados
 
 class MenuResultados : public Menu
 {
+private:
+  State *_state;
+
 protected:
   virtual void inicializarOpcoes();
 
 public:
-  MenuResultados(std::string label);
+  MenuResultados(std::string label, State *state);
 };
 
 #endif

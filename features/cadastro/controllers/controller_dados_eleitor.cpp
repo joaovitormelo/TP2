@@ -1,5 +1,7 @@
 #include "controller_dados_eleitor.h"
 
+// Classe para controlar a manipulação de dados do eleitor
+
 ControllerDadosEleitor::ControllerDadosEleitor(State *state) : _state(state) {}
 
 bool ControllerDadosEleitor::validaNumTitulo(int numTitulo, bool isEdit)

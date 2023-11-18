@@ -13,6 +13,10 @@
 #include "controller_candidato.h"
 #include "controller_dados_eleitor.h"
 #include "controller_dados_candidato.h"
+#include "controller_votacao.h"
+#include "menu_resultados.h"
+
+// Classe para inicializar, destruir e prover instâncias de todos os componentes do sistema
 
 class MainInitializer
 {
@@ -26,12 +30,15 @@ private:
   MenuEditarEleitor *_menuEditarEleitor;
   MenuEditarCandidato<Vereador> *_menuEditarVereador;
   MenuEditarCandidato<Prefeito> *_menuEditarPrefeito;
+  MenuResultados *_menuResultados;
   ControllerEleitor *_controllerEleitor;
   ControllerCandidato<Vereador> *_controllerVereador;
   ControllerCandidato<Prefeito> *_controllerPrefeito;
   ControllerDadosEleitor *_controllerDadosEleitor;
   ControllerDadosCandidato *_controllerDadosCandidato;
+  ControllerVotacao *_controllerVotacao;
   void initializeCadastro();
+  void destroyCadastro();
 
 public:
   MainInitializer();

@@ -1,6 +1,9 @@
 #ifndef INF112_ELEITOR_H
 #define INF112_ELEITOR_H
 #include <string>
+#include <fstream>
+class Vereador;
+class Prefeito;
 
 class Eleitor
 {
@@ -9,6 +12,8 @@ private:
   std::string _nome;
   std::string _zona;
   std::string _secao;
+  Vereador *_votoVereador;
+  Prefeito *_votoPrefeito;
 
 public:
   Eleitor(int numTitulo, std::string nome, std::string zona, std::string secao);
@@ -20,6 +25,11 @@ public:
   void setZona(std::string zona);
   std::string getSecao();
   void setSecao(std::string secao);
+  static Eleitor *fromString(std::string line);
+  Vereador *getVotoVereador();
+  void votaVereador(Vereador *vereador);
+  Prefeito *getVotoPrefeito();
+  void votaPrefeito(Prefeito *prefeito);
 };
 
 #endif

@@ -7,6 +7,8 @@
 #include "menu_eleitor.h"
 #include "menu_candidato.h"
 
+// Menu principal de cadastro
+
 class MenuCadastro : public Menu
 {
 private:

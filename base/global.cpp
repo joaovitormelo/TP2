@@ -1,4 +1,5 @@
 #include "global.h"
+#include "exception_invalid_format.h"
 
 void finalizarTela()
 {
@@ -28,4 +29,20 @@ RetornoController voltar()
 RetornoController sair()
 {
   return RetornoController::Sair;
+}
+
+std::string nextValLine(std::string line, int *pos, int *newPos, bool last)
+{
+  std::string val;
+  *newPos = line.find(";", *pos);
+  if (*newPos == std::string::npos)
+  {
+    if (!last)
+      throw ExceptionInvalidFormat();
+    else
+      *newPos = line.size();
+  }
+  val = line.substr(*pos, *newPos - *pos);
+  *pos = *newPos + 1;
+  return val;
 }

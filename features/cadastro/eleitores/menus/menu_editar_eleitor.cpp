@@ -1,5 +1,7 @@
 #include "menu_editar_eleitor.h"
 
+// Menu com as opções de edição de eleitor
+
 MenuEditarEleitor::MenuEditarEleitor(std::string label, State *state, ControllerDadosEleitor *controllerDadosEleitor) : Menu(label), _state(state), _controllerDadosEleitor(controllerDadosEleitor)
 {
   inicializarOpcoes();

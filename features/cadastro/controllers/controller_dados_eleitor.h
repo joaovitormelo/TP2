@@ -3,6 +3,8 @@
 #include "state.h"
 #include "global.h"
 
+// Classe para controlar a manipulação de dados do eleitor
+
 class ControllerDadosEleitor
 {
 private:

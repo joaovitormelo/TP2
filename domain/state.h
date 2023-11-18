@@ -39,6 +39,7 @@ public:
   void setCandidatoEdit(Candidato *candidatoEdit);
   Candidato *buscaPrefeito(int numTitulo);
   bool checaExisteNumero(int numero);
+  Eleitor *buscaEleitorVotacao(int numTitulo);
 };
 
 #endif

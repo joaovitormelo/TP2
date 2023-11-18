@@ -2,6 +2,8 @@
 #include "opcao_menu.h"
 #include "menu_eleitor.h"
 
+// Menu principal de cadastro
+
 MenuCadastro::MenuCadastro(std::string label, State *state, MenuEleitor *menuEleitor, MenuCandidato<Vereador> *menuVereador, MenuCandidato<Prefeito> *menuPrefeito) : Menu(label), _state(state), _menuEleitor(menuEleitor), _menuVereador(menuVereador), _menuPrefeito(menuPrefeito)
 {
   inicializarOpcoes();

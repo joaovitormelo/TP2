@@ -13,6 +13,8 @@ set(sources
   base/menu.cpp
   base/opcao_menu.h
   base/opcao_menu.cpp
+  base/exception_invalid_format.h
+  base/exception_invalid_format.cpp
   initializers/main_initializer.h
   initializers/main_initializer.cpp
   domain/eleitor.h
@@ -45,13 +47,16 @@ set(sources
   features/cadastro/candidatos/controllers/controller_candidato.cpp
   features/cadastro/candidatos/controllers/controller_dados_candidato.h
   features/cadastro/candidatos/controllers/controller_dados_candidato.cpp
+  features/votacao/controllers/controller_votacao.h
+  features/votacao/controllers/controller_votacao.cpp
+  features/resultados/menus/menu_resultados.h
+  features/resultados/menus/menu_resultados.cpp
 )
 
 set (dirs
   base
   initializers
   domain
-  controllers
   menus
   features/cadastro/menus
   features/cadastro/controllers
@@ -59,6 +64,9 @@ set (dirs
   features/cadastro/eleitores/controllers
   features/cadastro/candidatos/menus
   features/cadastro/candidatos/controllers
+  features/votacao/controllers
+  features/resultados/menus
+  features/resultados/controllers
 )
 
 add_executable(tp2 ${sources})

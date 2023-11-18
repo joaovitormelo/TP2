@@ -5,6 +5,8 @@
 #include "controller_dados_eleitor.h"
 #include "controller_dados_candidato.h"
 
+// Menu com as opções de edição de candidato (vereador ou prefeito)
+
 template <typename T>
 class MenuEditarCandidato : public Menu
 {

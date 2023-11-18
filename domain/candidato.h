@@ -2,6 +2,7 @@
 #define INF112_CANDIDATO_H
 #include "eleitor.h"
 #include <string>
+#include "global.h"
 
 class Candidato : public Eleitor
 {
@@ -13,6 +14,7 @@ private:
 
 public:
   Candidato(int numTitulo, std::string nome, std::string zona, std::string secao, int numero, std::string nomePartido, std::string cidade);
+  virtual ~Candidato();
   int getNumero();
   void setNumero(int numero);
   std::string getNomePartido();
@@ -21,6 +23,7 @@ public:
   void setCidade(std::string cidade);
   int getTotalVotos();
   void setTotalVotos(int totalVotos);
+  static Candidato *fromString(std::string line);
 };
 
 #endif

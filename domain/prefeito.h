@@ -7,6 +7,7 @@ class Prefeito : public Candidato
 {
 public:
   Prefeito(int numTitulo, std::string nome, std::string zona, std::string secao, int numero, std::string nomePartido, std::string cidade);
+  static Prefeito *fromString(std::string line);
 };
 
 #endif

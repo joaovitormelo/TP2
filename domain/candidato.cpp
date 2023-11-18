@@ -5,6 +5,10 @@ Candidato::Candidato(int numTitulo, std::string nome, std::string zona, std::str
   _totalVotos = 0;
 }
 
+Candidato::~Candidato()
+{
+}
+
 int Candidato::getNumero()
 {
   return _numero;
@@ -43,4 +47,21 @@ int Candidato::getTotalVotos()
 void Candidato::setTotalVotos(int totalVotos)
 {
   _totalVotos = totalVotos;
+}
+
+Candidato *Candidato::fromString(std::string line)
+{
+  int numTitulo, numero;
+  std::string nome, zona, secao, nomePartido, cidade;
+  int *pos = new int, *newPos = new int;
+  *pos = 0;
+  numTitulo = std::stoi(nextValLine(line, pos, newPos));
+  nome = nextValLine(line, pos, newPos);
+  zona = nextValLine(line, pos, newPos);
+  secao = nextValLine(line, pos, newPos);
+  numero = std::stoi(nextValLine(line, pos, newPos));
+  nomePartido = nextValLine(line, pos, newPos);
+  cidade = nextValLine(line, pos, newPos, true);
+  delete pos, newPos;
+  return new Candidato(numTitulo, nome, zona, secao, numero, nomePartido, cidade);
 }

@@ -1,5 +1,7 @@
 #include "controller_dados_candidato.h"
 
+// Classe para controlar a manipulação de dados do candidato (vereador ou prefeito)
+
 ControllerDadosCandidato::ControllerDadosCandidato(State *state) : _state(state) {}
 
 bool ControllerDadosCandidato::validaNumero(int numero, bool isEdit)

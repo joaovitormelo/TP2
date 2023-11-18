@@ -5,6 +5,7 @@
 #include "string"
 #include <vector>
 #include <typeinfo>
+#include "exception_invalid_format.h"
 
 // Classe para controlar todas as operações com os candidatos (vereador ou prefeito)
 
@@ -28,8 +29,9 @@ RetornoController ControllerCandidato<T>::listCandidato()
   }
   if (listaCandidatos.size())
   {
+    std::cout << listaCandidatos[0]->getNome() << std::endl;
     for (auto candidato : listaCandidatos)
-      std::cout << "Nº TÍTULO: " << candidato->getNumero() << " NOME: " << candidato->getNome() << std::endl;
+      std::cout << "NÚMERO: " << candidato->getNumTitulo() << " NOME: " << candidato->getNome() << std::endl;
   }
   else
     std::cout << "(Lista vazia)" << std::endl;
@@ -146,6 +148,88 @@ RetornoController ControllerCandidato<T>::deleteCandidato()
   }
   else
     std::cout << "Candidato não encontrado!" << std::endl;
+  return RetornoController::Completo;
+}
+
+template <typename T>
+RetornoController ControllerCandidato<T>::importCandidato()
+{
+  std::string path;
+  std::cout << "Importação de ";
+  if (typeid(T) == typeid(Vereador))
+    std::cout << "Vereadores:" << std::endl;
+  else
+    std::cout << "Prefeitos:" << std::endl;
+  std::cout << "Bem-vindo à importação de candidatos!" << std::endl;
+  std::cout << "Forneça um arquivo com cada linha no seguinte padrão:" << std::endl;
+  std::cout << "'numTitulo;nome;zona;secao;numero;nomePartido;cidade'." << std::endl;
+  std::cout << ">>> Informe o caminho completo para o arquivo: ";
+  path = readLine();
+  std::ifstream arquivo(path, std::ios::in);
+  std::string line;
+  int i = 0;
+  Candidato *candidato;
+  while (std::getline(arquivo, line))
+  {
+    i++;
+    try
+    {
+      if (typeid(T) == typeid(Vereador))
+        candidato = Vereador::fromString(line);
+      else
+        candidato = Prefeito::fromString(line);
+    }
+    catch (std::invalid_argument e)
+    {
+      std::cout << "Linha " << i << " - Falha: Nº Título deve ser um número!" << std::endl;
+      continue;
+    }
+    catch (ExceptionInvalidFormat e)
+    {
+      std::cout << "Linha " << i << " - Falha: Formato errado!" << std::endl;
+      continue;
+    }
+    if (_state->checaExisteNumTitulo(candidato->getNumTitulo()))
+    {
+      std::cout << "Linha " << i << " - Falha: Nº Título já cadastrado!" << std::endl;
+      continue;
+    }
+    if (_state->checaExisteNumero(candidato->getNumero()))
+    {
+      std::cout << "Linha " << i << " - Falha: Número já cadastrado!" << std::endl;
+      continue;
+    }
+    if (typeid(T) == typeid(Vereador))
+      _state->addVereador(dynamic_cast<Vereador *>(candidato));
+    else
+      _state->addPrefeito(dynamic_cast<Prefeito *>(candidato));
+  }
+  std::cout << "Importação finalizada!" << std::endl;
+  arquivo.close();
+  return RetornoController::Completo;
+}
+
+template <typename T>
+RetornoController ControllerCandidato<T>::exportCandidato()
+{
+  std::string path;
+  std::cout << "Exportação de ";
+  if (typeid(T) == typeid(Vereador))
+    std::cout << "Vereadores:" << std::endl;
+  else
+    std::cout << "Prefeitos:" << std::endl;
+  std::cout << ">>> Informe o caminho completo para o arquivo de saída: ";
+  path = readLine();
+  std::ofstream arquivo(path, std::ios::out);
+  std::vector<Candidato *> listaCandidatos;
+  if (typeid(T) == typeid(Vereador))
+    listaCandidatos = _state->getListaVereador();
+  else
+    listaCandidatos = _state->getListaPrefeito();
+  for (auto candidato : listaCandidatos)
+    arquivo << candidato->getNumTitulo() << ";" << candidato->getNome() << ";" << candidato->getZona() << ";" << candidato->getSecao() << ";" << candidato->getNumero() << ";" << candidato->getNomePartido() << ";" << candidato->getCidade() << std::endl;
+  std::cout << "Exportação finalizada!" << std::endl;
+  arquivo.close();
   return RetornoController::Completo;
 }
 

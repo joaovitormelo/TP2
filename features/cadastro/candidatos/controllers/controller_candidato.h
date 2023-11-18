@@ -24,6 +24,8 @@ public:
   RetornoController viewCandidato();
   RetornoController editCandidato();
   RetornoController deleteCandidato();
+  RetornoController importCandidato();
+  RetornoController exportCandidato();
 };
 
 #endif

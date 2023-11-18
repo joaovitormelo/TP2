@@ -21,6 +21,8 @@ public:
   RetornoController viewEleitor();
   RetornoController editEleitor();
   RetornoController deleteEleitor();
+  RetornoController importEleitor();
+  RetornoController exportEleitor();
 };
 
 #endif

@@ -4,6 +4,8 @@
 #include "menu.h"
 #include "controller_dados_eleitor.h"
 
+// Menu com as opções de edição de eleitor
+
 class MenuEditarEleitor : public Menu
 {
 private:

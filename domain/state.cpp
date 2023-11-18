@@ -155,3 +155,17 @@ bool State::checaExisteNumero(int numero)
       return true;
   return false;
 }
+
+Eleitor *State::buscaEleitorVotacao(int numTitulo)
+{
+  for (auto eleitor : _listaEleitor)
+    if (eleitor->getNumTitulo() == numTitulo)
+      return eleitor;
+  for (auto eleitor : _listaVereador)
+    if (eleitor->getNumTitulo() == numTitulo)
+      return eleitor;
+  for (auto eleitor : _listaPrefeito)
+    if (eleitor->getNumTitulo() == numTitulo)
+      return eleitor;
+  return nullptr;
+}

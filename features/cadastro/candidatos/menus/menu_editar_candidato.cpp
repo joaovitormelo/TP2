@@ -2,6 +2,8 @@
 #include "vereador.h"
 #include "prefeito.h"
 
+// Menu com as opções de edição de candidato (vereador ou prefeito)
+
 template <typename T>
 MenuEditarCandidato<T>::MenuEditarCandidato(std::string label, State *state, ControllerDadosEleitor *controllerDadosEleitor, ControllerDadosCandidato *ControllerDadosCandidato) : Menu(label), _state(state), _controllerDadosEleitor(controllerDadosEleitor), _controllerDadosCandidato(ControllerDadosCandidato)
 {

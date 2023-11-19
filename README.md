@@ -7,3 +7,5 @@ Trabalho Prático 2 de INF112, por João Vitor De Melo Machado.
 > cmake build
 - Execute o arquivo executável
 > ./build/tp2
+## Diagrama UML
+![Diagrama UML](./uml.jpeg)

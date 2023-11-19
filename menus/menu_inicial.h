@@ -4,6 +4,7 @@
 #include "state.h"
 #include "menu_cadastro.h"
 #include "controller_votacao.h"
+#include "menu_resultados.h"
 
 // Menu principal do programa
 
@@ -13,12 +14,13 @@ private:
   State *_state;
   MenuCadastro *_menuCadastro;
   ControllerVotacao *_controllerVotacao;
+  MenuResultados *_menuResultados;
 
 protected:
   virtual void inicializarOpcoes();
 
 public:
-  MenuInicial(std::string label, State *state, MenuCadastro *menuCadastro, ControllerVotacao *controllerVotacao);
+  MenuInicial(std::string label, State *state, MenuCadastro *menuCadastro, ControllerVotacao *controllerVotacao, MenuResultados *menuResultados);
 };
 
 #endif

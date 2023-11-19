@@ -51,6 +51,12 @@ set(sources
   features/votacao/controllers/controller_votacao.cpp
   features/resultados/menus/menu_resultados.h
   features/resultados/menus/menu_resultados.cpp
+  features/resultados/menus/menu_contar_votos.h
+  features/resultados/menus/menu_contar_votos.cpp
+  features/resultados/controllers/controller_resultados.h
+  features/resultados/controllers/controller_resultados.cpp
+  features/resultados/controllers/controller_contar_votos.h
+  features/resultados/controllers/controller_contar_votos.cpp
 )
 
 set (dirs

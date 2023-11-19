@@ -5,18 +5,37 @@
 MainInitializer::MainInitializer()
 {
   _state = new State();
+  Vereador *reginaldo = new Vereador(119, "Reginaldo", "A", "B", 13, "PT", "Divinópolis");
+  Vereador *cristiano = new Vereador(120, "Cristiano", "A", "B", 14, "PT", "Divinópolis");
+  Prefeito *jose = new Prefeito(121, "José", "A", "B", 15, "PSTD", "California");
+  Prefeito *andre = new Prefeito(122, "André", "A", "B", 16, "PT", "California");
+  _state->setListaVereador({reginaldo, cristiano});
+  _state->setListaPrefeito({jose, andre});
+  reginaldo->votaVereador(reginaldo);
+  reginaldo->votaPrefeito(jose);
+  cristiano->votaVereador(reginaldo);
+  cristiano->votaPrefeito(jose);
+  jose->votaVereador(cristiano);
+  jose->votaPrefeito(jose);
+  andre->votaVereador(reginaldo);
+  andre->votaPrefeito(andre);
+  reginaldo->setTotalVotos(3);
+  cristiano->setTotalVotos(1);
+  jose->setTotalVotos(3);
+  andre->setTotalVotos(1);
+
   initializeCadastro();
+  initializeResultados();
   _controllerVotacao = new ControllerVotacao(_state, _controllerDadosEleitor, _controllerDadosCandidato);
-  _menuResultados = new MenuResultados("Menu Resultados", _state);
-  _menuInicial = new MenuInicial("Menu Inicial", _state, _menuCadastro, _controllerVotacao);
+  _menuInicial = new MenuInicial("Menu Inicial", _state, _menuCadastro, _controllerVotacao, _menuResultados);
 }
 
 MainInitializer::~MainInitializer()
 {
   delete _menuInicial;
   destroyCadastro();
+  destroyResultados();
   delete _controllerVotacao;
-  delete _menuResultados;
   delete _state;
 }
 
@@ -37,6 +56,14 @@ void MainInitializer::initializeCadastro()
   _menuCadastro = new MenuCadastro("Menu de Cadastro", _state, _menuEleitor, _menuVereador, _menuPrefeito);
 }
 
+void MainInitializer::initializeResultados()
+{
+  _controllerContarVotos = new ControllerContarVotos(_state);
+  _menuContarVotos = new MenuContarVotos("Contagem de votos", _state, _controllerContarVotos);
+  _controllerResultados = new ControllerResultados(_state, _menuContarVotos);
+  _menuResultados = new MenuResultados("Menu Resultados", _state, _controllerResultados);
+}
+
 void MainInitializer::destroyCadastro()
 {
   delete _menuCadastro;
@@ -51,6 +78,14 @@ void MainInitializer::destroyCadastro()
   delete _menuEditarEleitor;
   delete _controllerDadosEleitor;
   delete _controllerDadosCandidato;
+}
+
+void MainInitializer::destroyResultados()
+{
+  delete _menuResultados;
+  delete _controllerResultados;
+  delete _menuContarVotos;
+  delete _controllerContarVotos;
 }
 
 void MainInitializer::iniciar()

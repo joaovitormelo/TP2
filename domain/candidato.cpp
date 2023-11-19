@@ -65,3 +65,12 @@ Candidato *Candidato::fromString(std::string line)
   delete pos, newPos;
   return new Candidato(numTitulo, nome, zona, secao, numero, nomePartido, cidade);
 }
+
+void Candidato::sortCandidatoList(std::vector<Candidato *> &candidatoList)
+{
+  std::sort(candidatoList.begin(), candidatoList.end(),
+            [&](Candidato *A, Candidato *B)
+            {
+              return A->getTotalVotos() > B->getTotalVotos();
+            });
+}

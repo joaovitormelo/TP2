@@ -3,6 +3,7 @@
 #include "eleitor.h"
 #include <string>
 #include "global.h"
+#include <vector>
 
 class Candidato : public Eleitor
 {
@@ -24,6 +25,7 @@ public:
   int getTotalVotos();
   void setTotalVotos(int totalVotos);
   static Candidato *fromString(std::string line);
+  static void sortCandidatoList(std::vector<Candidato *> &candidatoList);
 };
 
 #endif

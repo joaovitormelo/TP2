@@ -1,4 +1,0 @@
-as;Mairon;B
-114;Julio;A;B
-115;Alice;B;C
-116;Manuel;B;V
